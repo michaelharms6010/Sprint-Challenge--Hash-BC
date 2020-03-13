@@ -26,6 +26,11 @@ def proof_of_work(last_proof):
     proof = 0
     #  TODO: Your code here
 
+    guess = f"{last_proof}".encode()
+    last_hash = hashlib.sha256(guess).hexdigest()
+    while not valid_proof(last_hash, proof):
+        proof += 1 
+
     print("Proof found: " + str(proof) + " in " + str(timer() - start))
     return proof
 
@@ -40,7 +45,12 @@ def valid_proof(last_hash, proof):
     """
 
     # TODO: Your code here!
-    pass
+    
+    proof_encoded = f"{proof}".encode()
+    new_hash = hashlib.sha256(proof_encoded).hexdigest()
+    return last_hash[-6:] == new_hash[:6]
+
+
 
 
 if __name__ == '__main__':
