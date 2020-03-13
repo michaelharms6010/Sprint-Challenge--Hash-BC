@@ -24,4 +24,3 @@ def reconstruct_trip(tickets, length):
     output = [i for i in route if i is not None]  
     return output 
 
-    pass
