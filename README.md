@@ -24,11 +24,24 @@ This sprint challenge is divided up into three parts:  Hash tables coding, block
 
 Explain in detail the workings of a dynamic array:
 * What is the runtime complexity to access an array, add or remove from the front, and add or remove from the back?
+Access - Constant
+Add to front - Linear
+Remove from front - Linear
+Add to the back - (usually) Constant
+Remove from back - Constant
+
+
 * What is the worse case scenario if you try to extend the storage size of a dynamic array?
+
+Worst case, we have to copy everything over into a new memory block, giving us O(n), Linear time complexity
 
 Explain how a blockchain is structured. What are the blocks, what is the chain? How is the data organized?
  
+A blockchain is a database whose records are secured by hashing. The data is organized as a chain of objects which contain transactions and hashing information that are used for PoW, which is the work that preserves the chain integrity. A block is a single entry, and when a valid hash is found for a new block, its transactions are committed to the chain.
+
 Explain how proof of work functions. How does it operate. How does this protect the chain from attack. What kind of attack is possible?
+
+Proof of work makes it expensive to attack a chain, (hopefully cost-ineffective). By using huge amounts of work to brute-force search for a valid hash, attackers would need to have at least 51% of the work to have a probable means to spoof transactions and take over the longest chain. This is a "51% attack". This is why most blockchain financial services require a certain number of "confirmations" (new blocks) before treating a transaction as valid. Check out https://www.crypto51.app/ for some concrete numbers on the costs of attack on each blockchain. In order to maintain my spoofed transaction, I need to maintain my 51%, and by extention, the longest chain. This is a big ask. In order for me to justify faking a transaction for the standard 6 confirmations in Bitcoin, the transaction would have to be worth more than ~$364,000. That's electricity costs alone, so we're ASSUMING I own the requisite hardware to make the attack, which is millions of additional dollars of overhead, and the loss of chain integrity would make my dedicated mining hardware useless. This is why people say that self-interested miners have an incentive NOT to attack the chain. (The fact that a great deal of hash is centralized in china and Bitcoin's market cap is well below China's GDP .... that's  maybe cause for concern. :) )
 
 ## Project Set Up
 
